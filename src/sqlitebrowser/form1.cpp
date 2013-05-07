@@ -260,11 +260,12 @@ void mainForm::resetBrowser()
     comboBrowseTable->clear();
     QStringList tab = db.getTableNames();
     if  (tab.isEmpty()){
- comboBrowseTable->insertItem("",-1);
+        comboBrowseTable->insertItem("",-1);
     } else {
- for ( QStringList::Iterator ct = tab.begin(); ct != tab.end(); ++ct ) {
-     comboBrowseTable->insertItem(*ct,-1);
- }
+        tab.sort();
+        for ( QStringList::Iterator ct = tab.begin(); ct != tab.end(); ++ct ) {
+            comboBrowseTable->insertItem(*ct,-1);
+        }
     }
     setRecordsetLabel();
     comboBrowseTable->setCurrentItem(0);
